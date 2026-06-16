@@ -298,13 +298,12 @@ function CalorieCalculator({ labels, onAskAi }) {
           </Field>
         </div>
 
-        <Field label={labels.activity}>
-          <select className="nf-input" value={activity} onChange={e => setActivity(e.target.value)}>
-            {Object.entries(labels.activityLevels).map(([k, lbl]) => (
-              <option key={k} value={k}>{lbl}</option>
-            ))}
-          </select>
-        </Field>
+        <CustomSelect
+          label={labels.activity}
+          value={activity}
+          onChange={setActivity}
+          options={Object.entries(labels.activityLevels).map(([k, lbl]) => ({ value: k, label: lbl }))}
+        />
 
         <Field label={labels.goal}>
           <div className="nf-radio-row">
@@ -438,17 +437,12 @@ function NutritionCalculator({ labels }) {
 
         <section className="nf-nutrition-fields">
           <div className="nf-nutrition-row">
-            <Field label={labels.category}>
-              <select
-                className="nf-input"
-                value={category}
-                onChange={e => setCategory(e.target.value)}
-              >
-                {Object.entries(labels.categories).map(([k, lbl]) => (
-                  <option key={k} value={k}>{lbl}</option>
-                ))}
-              </select>
-            </Field>
+            <CustomSelect
+              label={labels.category}
+              value={category}
+              onChange={setCategory}
+              options={Object.entries(labels.categories).map(([k, lbl]) => ({ value: k, label: lbl }))}
+            />
 
             <Field label={labels.quantity}>
               <input className="nf-input" type="number" min="1" max="2000" value={grams} onChange={e => setGrams(e.target.value)} />
@@ -494,17 +488,12 @@ function NutritionCalculator({ labels }) {
                 />
               </Field>
 
-              <Field label={labels.category}>
-                <select
-                  className="nf-input"
-                  value={customForm.category}
-                  onChange={e => updateCustomForm('category', e.target.value)}
-                >
-                  {FOOD_CATEGORIES.map(k => (
-                    <option key={k} value={k}>{labels.categories[k]}</option>
-                  ))}
-                </select>
-              </Field>
+              <CustomSelect
+                label={labels.category}
+                value={customForm.category}
+                onChange={val => updateCustomForm('category', val)}
+                options={FOOD_CATEGORIES.map(k => ({ value: k, label: labels.categories[k] }))}
+              />
 
               <div className="nf-custom-food-macros">
                 <Field label={`${labels.rows.protein} (${labels.unit.g}/100 g)`}>
@@ -641,6 +630,63 @@ function NutrientTable({ title, labels, nutrients, rows, highlight }) {
           ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+function CustomSelect({ label, value, onChange, options }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  const selected = options.find(o => o.value === value);
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = e => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [open]);
+
+  const pick = (val) => { onChange(val); setOpen(false); };
+
+  return (
+    <div className="nf-field">
+      {label && <span className="nf-label">{label}</span>}
+      <div className="nf-food-picker" ref={ref}>
+        <button
+          type="button"
+          className={`nf-food-picker-trigger${open ? ' nf-food-picker-trigger--open' : ''}`}
+          onClick={() => setOpen(v => !v)}
+        >
+          <span className="nf-food-picker-value">{selected?.label ?? ''}</span>
+          <svg className="nf-food-picker-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+
+        {open && (
+          <div className="nf-food-picker-dropdown nf-select-dropdown">
+            <ul className="nf-food-picker-list">
+              {options.map(o => (
+                <li
+                  key={o.value}
+                  className={`nf-food-picker-item${o.value === value ? ' nf-food-picker-item--active' : ''}`}
+                  onClick={() => pick(o.value)}
+                >
+                  <span className="nf-food-picker-item-name">{o.label}</span>
+                  {o.value === value && (
+                    <svg className="nf-food-picker-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

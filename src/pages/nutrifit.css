@@ -859,6 +859,11 @@ select.nf-input {
   color: var(--text-3);
 }
 
+.nf-select-dropdown .nf-food-picker-list {
+  max-height: 180px;
+  padding: 4px;
+}
+
 .nf-custom-food {
   margin-top: 12px;
 }
