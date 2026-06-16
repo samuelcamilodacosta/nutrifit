@@ -620,8 +620,6 @@ html {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: calc(100vh - 380px);
-  overflow-y: auto;
 }
 
 .nf-nutrition-fields {
@@ -630,6 +628,12 @@ html {
   gap: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+}
+
+.nf-nutrition-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 10px;
 }
 
 .nf-input--spaced {
@@ -784,8 +788,8 @@ html {
 }
 
 .nf-nutrition-tables {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
@@ -838,8 +842,14 @@ html {
   padding-top: 10px;
   border-top: 1px solid rgba(34, 197, 94, 0.1);
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.nf-nutrition-actions .nf-btn {
+  width: auto;
+  flex-shrink: 0;
 }
 
 .nf-btn--add {
@@ -1365,47 +1375,79 @@ html {
 }
 
 /* ── Responsive ─────────────────────────────– */
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
+  .nf-nutrition-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
   .nf-form-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nf-results-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nf-header-inner {
+    padding: 8px 16px;
+  }
+
+  .nf-hero {
+    padding: 14px 16px 10px;
+  }
+
+  .nf-features {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .nf-tabs-wrap {
+    padding: 8px 16px;
+  }
+
+  .nf-tabs {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .nf-main {
+    padding: 12px 16px;
+  }
+
+  .nf-panel {
+    padding: 16px 14px;
+  }
+
+  .nf-form-grid {
+    grid-template-columns: 1fr;
   }
 
   .nf-results-grid {
     grid-template-columns: 1fr;
   }
 
-  .nf-nutrition-layout {
+  .nf-nutrition-row {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 768px) {
-  .nf-header-inner {
-    padding: 10px 16px;
-  }
-
-  .nf-hero {
-    padding: 20px 16px;
-  }
-
-  .nf-tabs-wrap {
-    padding: 16px 16px;
-  }
-
-  .nf-tabs {
+  .nf-nutrition-tables {
     grid-template-columns: 1fr;
-    gap: 8px;
   }
 
-  .nf-main {
-    padding: 16px 16px;
+  .nf-nutrition-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .nf-panel {
-    padding: 20px 16px;
+  .nf-nutrition-actions .nf-btn {
+    width: 100%;
   }
 
-  .nf-form-grid {
+  .nf-custom-food-macros {
     grid-template-columns: 1fr;
   }
 }

@@ -437,26 +437,34 @@ function NutritionCalculator({ labels }) {
         </header>
 
         <section className="nf-nutrition-fields">
-          <Field label={labels.category}>
-            <select
-              className="nf-input"
-              value={category}
-              onChange={e => setCategory(e.target.value)}
-            >
-              {Object.entries(labels.categories).map(([k, lbl]) => (
-                <option key={k} value={k}>{lbl}</option>
-              ))}
-            </select>
-          </Field>
+          <div className="nf-nutrition-row">
+            <Field label={labels.category}>
+              <select
+                className="nf-input"
+                value={category}
+                onChange={e => setCategory(e.target.value)}
+              >
+                {Object.entries(labels.categories).map(([k, lbl]) => (
+                  <option key={k} value={k}>{lbl}</option>
+                ))}
+              </select>
+            </Field>
+
+            <Field label={labels.quantity}>
+              <input className="nf-input" type="number" min="1" max="2000" value={grams} onChange={e => setGrams(e.target.value)} />
+            </Field>
+          </div>
 
           <Field label={labels.food}>
-            <input
-              className="nf-input"
-              type="search"
-              placeholder={labels.search}
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-            />
+            <div className="nf-food-search-row">
+              <input
+                className="nf-input"
+                type="search"
+                placeholder={labels.search}
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+              />
+            </div>
             <select
               className="nf-input nf-input--spaced"
               value={foodId}
@@ -473,10 +481,6 @@ function NutritionCalculator({ labels }) {
                 ))
               )}
             </select>
-          </Field>
-
-          <Field label={labels.quantity}>
-            <input className="nf-input" type="number" min="1" max="2000" value={grams} onChange={e => setGrams(e.target.value)} />
           </Field>
         </section>
 
