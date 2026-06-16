@@ -11,6 +11,14 @@ export const t = {
       { icon: '✨', title: 'NutriFit IA', desc: 'Assistente inteligente para dúvidas e planos alimentares.' },
     ],
     footer: 'NutriFit · Plataforma de nutrição',
+    menu: {
+      theme: 'Tema',
+      dark: 'Escuro',
+      light: 'Claro',
+      language: 'Idioma',
+      portuguese: 'Português',
+      english: 'English',
+    },
     calorie: {
       title: 'Calculadora de Calorias',
       desc: 'Estime sua taxa metabólica basal (TMB) e gasto calórico diário (GET) com base no seu perfil.',
@@ -114,6 +122,14 @@ export const t = {
       { icon: '✨', title: 'NutriFit AI', desc: 'Smart assistant for diet questions and meal plans.' },
     ],
     footer: 'NutriFit · Nutrition platform',
+    menu: {
+      theme: 'Theme',
+      dark: 'Dark',
+      light: 'Light',
+      language: 'Language',
+      portuguese: 'Português',
+      english: 'English',
+    },
     calorie: {
       title: 'Calorie Calculator',
       desc: 'Estimate your basal metabolic rate (BMR) and daily energy expenditure (TDEE) based on your profile.',

@@ -123,7 +123,7 @@ export default function NutriFit() {
             {showMenu && (
               <div className="nf-menu-dropdown" ref={menuRef}>
                 <div className="nf-menu-section">
-                  <span className="nf-menu-label">Tema</span>
+                  <span className="nf-menu-label">{tr.menu.theme}</span>
                   <div className="nf-menu-options">
                     <button
                       type="button"
@@ -131,7 +131,7 @@ export default function NutriFit() {
                       onClick={() => setTheme('dark')}
                     >
                       <span className="nf-menu-option-icon">🌙</span>
-                      <span>Escuro</span>
+                      <span>{tr.menu.dark}</span>
                     </button>
                     <button
                       type="button"
@@ -139,13 +139,13 @@ export default function NutriFit() {
                       onClick={() => setTheme('light')}
                     >
                       <span className="nf-menu-option-icon">☀️</span>
-                      <span>Claro</span>
+                      <span>{tr.menu.light}</span>
                     </button>
                   </div>
                 </div>
                 <div className="nf-menu-divider" />
                 <div className="nf-menu-section">
-                  <span className="nf-menu-label">Idioma</span>
+                  <span className="nf-menu-label">{tr.menu.language}</span>
                   <div className="nf-menu-options">
                     <button
                       type="button"
@@ -153,7 +153,7 @@ export default function NutriFit() {
                       onClick={() => setLang('pt')}
                     >
                       <span className="nf-menu-option-icon">🇧🇷</span>
-                      <span>Português</span>
+                      <span>{tr.menu.portuguese}</span>
                     </button>
                     <button
                       type="button"
@@ -161,7 +161,7 @@ export default function NutriFit() {
                       onClick={() => setLang('en')}
                     >
                       <span className="nf-menu-option-icon">🇺🇸</span>
-                      <span>English</span>
+                      <span>{tr.menu.english}</span>
                     </button>
                   </div>
                 </div>
