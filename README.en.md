@@ -184,8 +184,8 @@ NutriFit supports both Portuguese and English. Users can switch languages on-the
 - ✅ API key is only used for AI requests
 - ✅ No cookies or tracking
 
-## 📖 Documentation
+---
 
-- **User Guide**: See [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
-- **API Reference**: See [docs/API.md](docs/API.md)
-- **Test Documentation**: See [TESTS.md](TESTS.md)
+**Made with ❤️ for nutrition enthusiasts**
+
+Last updated: June 2026

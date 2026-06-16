@@ -186,8 +186,8 @@ NutriFit suporta Português e Inglês. Usuários podem trocar idiomas em tempo r
 - ✅ Chave de API é usada apenas para requisições de IA
 - ✅ Sem cookies ou rastreamento
 
-## 📖 Documentação
+---
 
-- **Guia do Usuário**: Veja [docs/GUIA_USUARIO.md](docs/GUIA_USUARIO.md)
-- **Referência de API**: Veja [docs/API.md](docs/API.md)
-- **Documentação de Testes**: Veja [TESTS.md](TESTS.md)
+**Feito com ❤️ para entusiastas de nutrição**
+
+Última atualização: Junho de 2026
