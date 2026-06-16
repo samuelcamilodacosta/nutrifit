@@ -455,33 +455,18 @@ function NutritionCalculator({ labels }) {
             </Field>
           </div>
 
-          <Field label={labels.food}>
-            <div className="nf-food-search-row">
-              <input
-                className="nf-input"
-                type="search"
-                placeholder={labels.search}
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-              />
-            </div>
-            <select
-              className="nf-input nf-input--spaced"
-              value={foodId}
-              onChange={e => setFoodId(e.target.value)}
-            >
-              <option value="">{labels.selectFood}</option>
-              {filtered.length === 0 ? (
-                <option value="" disabled>{labels.noResults}</option>
-              ) : (
-                filtered.map(f => (
-                  <option key={f.id} value={f.id}>
-                    {f.custom ? `${f.name} (${labels.customBadge})` : f.name}
-                  </option>
-                ))
-              )}
-            </select>
-          </Field>
+          <FoodPicker
+            label={labels.food}
+            searchPlaceholder={labels.search}
+            selectPlaceholder={labels.selectFood}
+            noResults={labels.noResults}
+            customBadge={labels.customBadge}
+            query={query}
+            onQueryChange={setQuery}
+            foods={filtered}
+            value={foodId}
+            onChange={setFoodId}
+          />
         </section>
 
         <section className="nf-custom-food">
@@ -656,6 +641,92 @@ function NutrientTable({ title, labels, nutrients, rows, highlight }) {
           ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+function FoodPicker({ label, searchPlaceholder, selectPlaceholder, noResults, customBadge, query, onQueryChange, foods, value, onChange }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+
+  const selected = foods.find(f => f.id === value) ?? null;
+
+  useEffect(() => {
+    if (!open) return;
+    const handler = e => {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [open]);
+
+  const pick = (id) => {
+    onChange(id);
+    setOpen(false);
+  };
+
+  return (
+    <div className="nf-field">
+      <span className="nf-label">{label}</span>
+      <div className="nf-food-picker" ref={ref}>
+        <button
+          type="button"
+          className={`nf-food-picker-trigger${open ? ' nf-food-picker-trigger--open' : ''}`}
+          onClick={() => setOpen(v => !v)}
+        >
+          <span className={selected ? 'nf-food-picker-value' : 'nf-food-picker-placeholder'}>
+            {selected
+              ? <>{selected.name}{selected.custom && <span className="nf-custom-badge">{customBadge}</span>}</>
+              : selectPlaceholder}
+          </span>
+          <svg className="nf-food-picker-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </button>
+
+        {open && (
+          <div className="nf-food-picker-dropdown">
+            <div className="nf-food-picker-search-wrap">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="nf-food-picker-search-icon">
+                <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                className="nf-food-picker-search"
+                type="text"
+                placeholder={searchPlaceholder}
+                value={query}
+                onChange={e => onQueryChange(e.target.value)}
+                autoFocus
+              />
+              {query && (
+                <button type="button" className="nf-food-picker-clear" onClick={() => onQueryChange('')}>✕</button>
+              )}
+            </div>
+
+            <ul className="nf-food-picker-list">
+              {foods.length === 0 ? (
+                <li className="nf-food-picker-empty">{noResults}</li>
+              ) : (
+                foods.map(f => (
+                  <li
+                    key={f.id}
+                    className={`nf-food-picker-item${f.id === value ? ' nf-food-picker-item--active' : ''}`}
+                    onClick={() => pick(f.id)}
+                  >
+                    <span className="nf-food-picker-item-name">{f.name}</span>
+                    {f.custom && <span className="nf-custom-badge">{customBadge}</span>}
+                    {f.id === value && (
+                      <svg className="nf-food-picker-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    )}
+                  </li>
+                ))
+              )}
+            </ul>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -667,6 +667,198 @@ select.nf-input {
   margin-top: 6px;
 }
 
+/* ── Food Picker ─────────────────────────────── */
+.nf-food-picker {
+  position: relative;
+  width: 100%;
+}
+
+.nf-food-picker-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: rgba(var(--bg-input-rgb), 0.6);
+  border: 1px solid rgba(34, 197, 94, 0.12);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--text-1);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+}
+
+.nf-food-picker-trigger:hover {
+  border-color: rgba(34, 197, 94, 0.25);
+}
+
+.nf-food-picker-trigger--open {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.nf-food-picker-placeholder {
+  color: var(--text-3);
+  font-weight: 400;
+}
+
+.nf-food-picker-value {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.nf-food-picker-arrow {
+  flex-shrink: 0;
+  color: #22c55e;
+  transition: transform 0.2s;
+}
+
+.nf-food-picker-trigger--open .nf-food-picker-arrow {
+  transform: rotate(180deg);
+}
+
+.nf-food-picker-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--bg-1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  animation: fpFadeIn 0.15s ease;
+}
+
+@keyframes fpFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nf-food-picker-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+  background: rgba(34, 197, 94, 0.04);
+}
+
+.nf-food-picker-search-icon {
+  flex-shrink: 0;
+  color: var(--text-3);
+}
+
+.nf-food-picker-search {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--text-1);
+  outline: none;
+  font-weight: 500;
+}
+
+.nf-food-picker-search::placeholder {
+  color: var(--text-3);
+  font-weight: 400;
+}
+
+.nf-food-picker-clear {
+  background: transparent;
+  border: none;
+  color: var(--text-3);
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.nf-food-picker-clear:hover {
+  color: var(--text-1);
+}
+
+.nf-food-picker-list {
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  max-height: 220px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(34, 197, 94, 0.3) transparent;
+}
+
+.nf-food-picker-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.nf-food-picker-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nf-food-picker-list::-webkit-scrollbar-thumb {
+  background: rgba(34, 197, 94, 0.3);
+  border-radius: 99px;
+}
+
+.nf-food-picker-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 197, 94, 0.5);
+}
+
+.nf-food-picker-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-1);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.nf-food-picker-item:hover {
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.nf-food-picker-item--active {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.nf-food-picker-item-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nf-food-picker-check {
+  flex-shrink: 0;
+  color: #22c55e;
+}
+
+.nf-food-picker-empty {
+  padding: 16px 10px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
 .nf-custom-food {
   margin-top: 12px;
 }
