@@ -2,10 +2,12 @@ import { useState, useEffect } from 'react';
 import { t } from './translations';
 import { AppContext } from './AppContext';
 import NutriFit from './pages/NutriFit';
+import Homepage from './pages/Homepage';
 
 function App() {
   const [lang, setLang] = useState(() => localStorage.getItem('nutrifit-lang') || 'pt');
   const [theme, setTheme] = useState(() => localStorage.getItem('nutrifit-theme') || 'dark');
+  const [currentPage, setCurrentPage] = useState('home');
 
   useEffect(() => {
     localStorage.setItem('nutrifit-lang', lang);
@@ -20,7 +22,11 @@ function App() {
 
   return (
     <AppContext.Provider value={{ lang, setLang, tr, theme, setTheme }}>
-      <NutriFit />
+      {currentPage === 'home' ? (
+        <Homepage onStartClick={() => setCurrentPage('app')} />
+      ) : (
+        <NutriFit onBackClick={() => setCurrentPage('home')} />
+      )}
     </AppContext.Provider>
   );
 }
