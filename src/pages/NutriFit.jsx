@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useMemo, useState, useEffect, useRef } from 'react';
 import { AppContext } from '../AppContext';
 import NutriFitChat from '../components/NutriFitChat';
 import {
@@ -77,6 +77,21 @@ export default function NutriFit() {
   const { tr, lang, setLang, theme, setTheme } = useContext(AppContext);
   const [tab, setTab] = useState('calories');
   const [pendingChatMessage, setPendingChatMessage] = useState(null);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    if (showMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [showMenu]);
 
   const handleAskAi = (fields, mode = 'analyze') => {
     const payload = { ...fields, labels: tr.calorie, lang };
@@ -97,24 +112,61 @@ export default function NutriFit() {
             <span className="nf-brand-name">{tr.headline}</span>
           </div>
           <div className="nf-header-controls">
-            <div className="nf-control-group">
-              <button 
-                type="button" 
-                className={`nf-theme-btn ${theme === 'dark' ? 'nf-theme-btn--active' : ''}`}
-                onClick={toggleTheme} 
-                title={theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
-              >
-                {theme === 'dark' ? '🌙' : '☀️'}
-              </button>
-              <button 
-                type="button" 
-                className={`nf-lang-btn ${lang === 'en' ? 'nf-lang-btn--active' : ''}`}
-                onClick={toggleLang}
-                title={lang === 'pt' ? 'Switch to English' : 'Mudar para Português'}
-              >
-                {lang === 'pt' ? 'EN' : 'PT'}
-              </button>
-            </div>
+            <button 
+              type="button" 
+              className="nf-menu-btn"
+              onClick={() => setShowMenu(!showMenu)}
+              title="Preferências"
+            >
+              <span className="nf-menu-icon">⚙️</span>
+            </button>
+            {showMenu && (
+              <div className="nf-menu-dropdown" ref={menuRef}>
+                <div className="nf-menu-section">
+                  <span className="nf-menu-label">Tema</span>
+                  <div className="nf-menu-options">
+                    <button
+                      type="button"
+                      className={`nf-menu-option ${theme === 'dark' ? 'nf-menu-option--active' : ''}`}
+                      onClick={() => setTheme('dark')}
+                    >
+                      <span className="nf-menu-option-icon">🌙</span>
+                      <span>Escuro</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`nf-menu-option ${theme === 'light' ? 'nf-menu-option--active' : ''}`}
+                      onClick={() => setTheme('light')}
+                    >
+                      <span className="nf-menu-option-icon">☀️</span>
+                      <span>Claro</span>
+                    </button>
+                  </div>
+                </div>
+                <div className="nf-menu-divider" />
+                <div className="nf-menu-section">
+                  <span className="nf-menu-label">Idioma</span>
+                  <div className="nf-menu-options">
+                    <button
+                      type="button"
+                      className={`nf-menu-option ${lang === 'pt' ? 'nf-menu-option--active' : ''}`}
+                      onClick={() => setLang('pt')}
+                    >
+                      <span className="nf-menu-option-icon">🇧🇷</span>
+                      <span>Português</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`nf-menu-option ${lang === 'en' ? 'nf-menu-option--active' : ''}`}
+                      onClick={() => setLang('en')}
+                    >
+                      <span className="nf-menu-option-icon">🇺🇸</span>
+                      <span>English</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </header>
