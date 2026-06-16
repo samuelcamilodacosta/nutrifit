@@ -360,6 +360,7 @@ function NutritionCalculator({ labels }) {
   const [showCustomForm, setShowCustomForm] = useState(false);
   const [customForm, setCustomForm] = useState(CUSTOM_FOOD_DEFAULTS);
   const [customError, setCustomError] = useState('');
+  const [step, setStep] = useState(1);
 
   const allFoods = useMemo(
     () => [...nutrifitFoods, ...customFoods],
@@ -428,6 +429,14 @@ function NutritionCalculator({ labels }) {
     ['fiber', labels.rows.fiber, labels.unit.g],
   ];
 
+  const handleNextStep = () => {
+    if (step === 1 && !category) return;
+    if (step === 2 && !foodId) return;
+    setStep(Math.min(step + 1, 3));
+  };
+
+  const handlePrevStep = () => setStep(Math.max(step - 1, 1));
+
   return (
     <div className="nf-nutrition-layout">
       <div className="nf-panel nf-nutrition-panel">
@@ -436,119 +445,109 @@ function NutritionCalculator({ labels }) {
           <p className="nf-panel-desc">{labels.desc}</p>
         </header>
 
-        <section className="nf-nutrition-fields">
-          <Field label={labels.category}>
-            <select
-              className="nf-input"
-              value={category}
-              onChange={e => setCategory(e.target.value)}
-            >
-              {Object.entries(labels.categories).map(([k, lbl]) => (
-                <option key={k} value={k}>{lbl}</option>
-              ))}
-            </select>
-          </Field>
+        <div className="nf-wizard-steps">
+          <div className={`nf-wizard-step-indicator${step >= 1 ? ' nf-wizard-step-indicator--active' : ''}`}>1</div>
+          <div className={`nf-wizard-step-line${step > 1 ? ' nf-wizard-step-line--active' : ''}`} />
+          <div className={`nf-wizard-step-indicator${step >= 2 ? ' nf-wizard-step-indicator--active' : ''}`}>2</div>
+          <div className={`nf-wizard-step-line${step > 2 ? ' nf-wizard-step-line--active' : ''}`} />
+          <div className={`nf-wizard-step-indicator${step >= 3 ? ' nf-wizard-step-indicator--active' : ''}`}>3</div>
+        </div>
 
-          <Field label={labels.food}>
-            <input
-              className="nf-input"
-              type="search"
-              placeholder={labels.search}
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-            />
-            <select
-              className="nf-input nf-input--spaced"
-              value={foodId}
-              onChange={e => setFoodId(e.target.value)}
-            >
-              <option value="">{labels.selectFood}</option>
-              {filtered.length === 0 ? (
-                <option value="" disabled>{labels.noResults}</option>
-              ) : (
-                filtered.map(f => (
-                  <option key={f.id} value={f.id}>
-                    {f.custom ? `${f.name} (${labels.customBadge})` : f.name}
-                  </option>
-                ))
-              )}
-            </select>
-          </Field>
-
-          <Field label={labels.quantity}>
-            <input className="nf-input" type="number" min="1" max="2000" value={grams} onChange={e => setGrams(e.target.value)} />
-          </Field>
-        </section>
-
-        <section className="nf-custom-food">
-          <button
-            type="button"
-            className="nf-custom-food-toggle"
-            onClick={() => setShowCustomForm(prev => !prev)}
-            aria-expanded={showCustomForm}
-          >
-            <span>{labels.addFood}</span>
-            <span className="nf-custom-food-toggle-icon" aria-hidden>{showCustomForm ? '−' : '+'}</span>
-          </button>
-
-          {showCustomForm && (
-            <form className="nf-custom-food-form" onSubmit={saveCustomFood}>
-              <p className="nf-custom-food-desc">{labels.addFoodDesc}</p>
-
-              <Field label={labels.foodName}>
-                <input
-                  className="nf-input"
-                  type="text"
-                  placeholder={labels.foodNamePlaceholder}
-                  value={customForm.name}
-                  onChange={e => updateCustomForm('name', e.target.value)}
-                />
-              </Field>
-
+        <div className="nf-wizard-content">
+          {step === 1 && (
+            <div className="nf-wizard-card nf-wizard-card--active">
+              <h3 className="nf-wizard-title">Categoria</h3>
               <Field label={labels.category}>
                 <select
                   className="nf-input"
-                  value={customForm.category}
-                  onChange={e => updateCustomForm('category', e.target.value)}
+                  value={category}
+                  onChange={e => setCategory(e.target.value)}
+                  autoFocus
                 >
-                  {FOOD_CATEGORIES.map(k => (
-                    <option key={k} value={k}>{labels.categories[k]}</option>
+                  {Object.entries(labels.categories).map(([k, lbl]) => (
+                    <option key={k} value={k}>{lbl}</option>
                   ))}
                 </select>
               </Field>
-
-              <div className="nf-custom-food-macros">
-                <Field label={`${labels.rows.protein} (${labels.unit.g}/100 g)`}>
-                  <input className="nf-input" type="number" min="0" step="0.1" value={customForm.protein} onChange={e => updateCustomForm('protein', e.target.value)} />
-                </Field>
-                <Field label={`${labels.rows.carbs} (${labels.unit.g}/100 g)`}>
-                  <input className="nf-input" type="number" min="0" step="0.1" value={customForm.carbs} onChange={e => updateCustomForm('carbs', e.target.value)} />
-                </Field>
-                <Field label={`${labels.rows.fat} (${labels.unit.g}/100 g)`}>
-                  <input className="nf-input" type="number" min="0" step="0.1" value={customForm.fat} onChange={e => updateCustomForm('fat', e.target.value)} />
-                </Field>
-                <Field label={`${labels.rows.fiber} (${labels.unit.g}/100 g)`}>
-                  <input className="nf-input" type="number" min="0" step="0.1" value={customForm.fiber} onChange={e => updateCustomForm('fiber', e.target.value)} />
-                </Field>
-              </div>
-
-              <div className="nf-custom-food-preview">
-                <span className="nf-custom-food-preview-label">{labels.previewKcal}</span>
-                <span className="nf-custom-food-preview-value">{fmt(customPreviewKcal, 0)} {labels.unit.kcal}</span>
-              </div>
-
-              {customError && <p className="nf-custom-food-error">{customError}</p>}
-
-              <button type="submit" className="nf-btn-secondary nf-btn--save-food">
-                {labels.saveFood}
-              </button>
-            </form>
+              <p className="nf-wizard-hint">{labels.selectFood}</p>
+            </div>
           )}
-        </section>
 
-        <section className="nf-nutrition-preview">
-          {selected ? (
-            <>
+          {step === 2 && (
+            <div className="nf-wizard-card nf-wizard-card--active">
+              <h3 className="nf-wizard-title">Buscar Alimento</h3>
+              <Field label={labels.food}>
+                <input
+                  className="nf-input"
+                  type="search"
+                  placeholder={labels.search}
+                  value={query}
+                  onChange={e => setQuery(e.target.value)}
+                  autoFocus
+                />
+              </Field>
+              <Field label="">
+                <select
+                  className="nf-input"
+                  value={foodId}
+                  onChange={e => setFoodId(e.target.value)}
+                >
+                  <option value="">{labels.selectFood}</option>
+                  {filtered.length === 0 ? (
+                    <option value="" disabled>{labels.noResults}</option>
+                  ) : (
+                    filtered.map(f => (
+                      <option key={f.id} value={f.id}>
+                        {f.custom ? `${f.name} (${labels.customBadge})` : f.name}
+                      </option>
+                    ))
+                  )}
+                </select>
+              </Field>
+              <button
+                type="button"
+                className="nf-custom-food-toggle nf-wizard-custom-btn"
+                onClick={() => setShowCustomForm(prev => !prev)}
+              >
+                <span>+ {labels.addFood}</span>
+                <span className="nf-custom-food-toggle-icon">{showCustomForm ? '−' : '+'}</span>
+              </button>
+
+              {showCustomForm && (
+                <form className="nf-custom-food-form nf-custom-food-form--compact" onSubmit={saveCustomFood}>
+                  <Field label={labels.foodName}>
+                    <input
+                      className="nf-input"
+                      type="text"
+                      placeholder={labels.foodNamePlaceholder}
+                      value={customForm.name}
+                      onChange={e => updateCustomForm('name', e.target.value)}
+                    />
+                  </Field>
+
+                  <div className="nf-custom-food-macros">
+                    <Field label={`${labels.rows.protein}`}>
+                      <input className="nf-input" type="number" min="0" step="0.1" value={customForm.protein} onChange={e => updateCustomForm('protein', e.target.value)} />
+                    </Field>
+                    <Field label={`${labels.rows.carbs}`}>
+                      <input className="nf-input" type="number" min="0" step="0.1" value={customForm.carbs} onChange={e => updateCustomForm('carbs', e.target.value)} />
+                    </Field>
+                    <Field label={`${labels.rows.fat}`}>
+                      <input className="nf-input" type="number" min="0" step="0.1" value={customForm.fat} onChange={e => updateCustomForm('fat', e.target.value)} />
+                    </Field>
+                  </div>
+
+                  <button type="submit" className="nf-btn-secondary nf-btn--save-food">
+                    {labels.saveFood}
+                  </button>
+                </form>
+              )}
+            </div>
+          )}
+
+          {step === 3 && selected && (
+            <div className="nf-wizard-card nf-wizard-card--active">
+              <h3 className="nf-wizard-title">Quantidade</h3>
               <div className="nf-selected-food">
                 <span className="nf-selected-food-label">{labels.selected}</span>
                 <span className="nf-selected-food-name">
@@ -557,30 +556,60 @@ function NutritionCalculator({ labels }) {
                     <span className="nf-custom-badge">{labels.customBadge}</span>
                   )}
                 </span>
-                <span className="nf-selected-food-qty">{g} g</span>
               </div>
+
+              <Field label={labels.quantity}>
+                <input 
+                  className="nf-input" 
+                  type="number" 
+                  min="1" 
+                  max="2000" 
+                  value={grams} 
+                  onChange={e => setGrams(e.target.value)}
+                  autoFocus
+                />
+              </Field>
 
               <div className="nf-nutrition-tables">
                 <NutrientTable title={labels.per100} labels={labels} nutrients={per100} rows={nutrientRows} />
                 <NutrientTable title={labels.calculated} labels={labels} nutrients={current} rows={nutrientRows} highlight />
               </div>
-            </>
-          ) : (
-            <p className="nf-nutrition-note nf-nutrition-note--center">{labels.selectFood}</p>
-          )}
-        </section>
 
-        <section className="nf-nutrition-actions">
+              <p className="nf-nutrition-note">{labels.kcalNote}</p>
+            </div>
+          )}
+        </div>
+
+        <div className="nf-wizard-controls">
           <button
             type="button"
-            className="nf-btn nf-btn--add"
-            onClick={addToMeal}
-            disabled={g <= 0 || !selected}
+            className="nf-btn nf-btn--secondary"
+            onClick={handlePrevStep}
+            disabled={step === 1}
           >
-            {labels.add}
+            ← Voltar
           </button>
-          <p className="nf-nutrition-note">{labels.kcalNote}</p>
-        </section>
+
+          {step < 3 ? (
+            <button
+              type="button"
+              className="nf-btn"
+              onClick={handleNextStep}
+              disabled={step === 1 ? !category : !foodId}
+            >
+              Próximo →
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="nf-btn nf-btn--add"
+              onClick={addToMeal}
+              disabled={g <= 0 || !selected}
+            >
+              {labels.add}
+            </button>
+          )}
+        </div>
       </div>
 
       <div className="nf-panel nf-meal-panel">

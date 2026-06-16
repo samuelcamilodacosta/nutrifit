@@ -49,11 +49,11 @@ html {
 .nf-header-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 12px 28px;
+  padding: 8px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
 }
 
 .nf-brand {
@@ -194,7 +194,7 @@ html {
 /* ── Hero Section ───────────────────────────────── */
 .nf-hero {
   position: relative;
-  padding: 32px 28px 28px;
+  padding: 16px 24px 12px;
   z-index: 10;
   text-align: center;
   border-bottom: 1px solid rgba(34, 197, 94, 0.1);
@@ -208,17 +208,17 @@ html {
 .nf-hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 10px;
+  gap: 4px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #22c55e;
   background: rgba(34, 197, 94, 0.1);
   border: 1px solid rgba(34, 197, 94, 0.2);
   border-radius: 50px;
-  padding: 6px 12px;
-  margin-bottom: 12px;
+  padding: 4px 8px;
+  margin-bottom: 6px;
 }
 
 .nf-hero-badge::before {
@@ -232,11 +232,11 @@ html {
 }
 
 .nf-hero-title {
-  font-size: clamp(28px, 5vw, 40px);
+  font-size: clamp(22px, 4vw, 32px);
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 4px;
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -244,9 +244,9 @@ html {
 }
 
 .nf-hero-sub {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-2);
-  line-height: 1.5;
+  line-height: 1.4;
   max-width: 600px;
   margin: 0 auto;
   font-weight: 500;
@@ -256,18 +256,18 @@ html {
 .nf-features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 20px;
+  gap: 8px;
+  margin-top: 8px;
 }
 
 .nf-feature {
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.02));
   border: 1px solid rgba(34, 197, 94, 0.12);
-  border-radius: 10px;
-  padding: 14px 12px;
+  border-radius: 8px;
+  padding: 10px 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   transition: all 0.2s ease;
   cursor: pointer;
   text-align: center;
@@ -283,8 +283,8 @@ html {
 }
 
 .nf-feature-icon {
-  font-size: 30px;
-  height: 36px;
+  font-size: 24px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,7 +307,7 @@ html {
 .nf-tabs-wrap {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px 28px;
+  padding: 10px 24px;
   z-index: 10;
   position: relative;
 }
@@ -319,11 +319,11 @@ html {
 }
 
 .nf-tab {
-  padding: 12px 16px;
+  padding: 9px 12px;
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.06), transparent);
   border: 1px solid rgba(34, 197, 94, 0.15);
-  border-radius: 10px;
-  font-size: 13px;
+  border-radius: 8px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--text-2);
   cursor: pointer;
@@ -351,7 +351,7 @@ html {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  padding: 28px 28px;
+  padding: 16px 24px;
   z-index: 10;
   min-height: 0;
   overflow-y: auto;
@@ -373,25 +373,25 @@ html {
 .nf-panel {
   background: linear-gradient(135deg, rgba(var(--bg-card-rgb), 0.8), rgba(var(--bg-card-rgb), 0.6));
   border: 1px solid rgba(34, 197, 94, 0.15);
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 .nf-panel-title {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
-  margin-bottom: 8px;
-  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
 }
 
 .nf-panel-desc {
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-2);
-  line-height: 1.6;
-  margin-bottom: 24px;
+  line-height: 1.5;
+  margin-bottom: 16px;
   font-weight: 500;
 }
 
@@ -399,13 +399,13 @@ html {
 .nf-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 14px;
 }
 
 .nf-form-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 .nf-field {
@@ -425,8 +425,8 @@ html {
   background: rgba(var(--bg-input-rgb), 0.6);
   border: 1px solid rgba(34, 197, 94, 0.12);
   border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 13px;
+  padding: 8px 10px;
+  font-size: 12px;
   color: var(--text-1);
   font-family: inherit;
   font-weight: 500;
@@ -473,12 +473,12 @@ html {
 }
 
 .nf-btn {
-  padding: 11px 20px;
+  padding: 8px 14px;
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: #ffffff;
   border: none;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   cursor: pointer;
   font-family: inherit;
@@ -494,6 +494,23 @@ html {
 
 .nf-btn:active {
   transform: scale(0.98);
+}
+
+.nf-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.nf-btn--secondary {
+  background: transparent;
+  color: #22c55e;
+  border: 1.5px solid rgba(34, 197, 94, 0.3);
+}
+
+.nf-btn--secondary:hover {
+  background: rgba(34, 197, 94, 0.08);
+  border-color: #22c55e;
 }
 
 .nf-btn-secondary {
@@ -531,14 +548,14 @@ html {
 .nf-results-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 .nf-result-card {
   background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.02));
   border: 1px solid rgba(34, 197, 94, 0.12);
   border-radius: 12px;
-  padding: 18px 16px;
+  padding: 12px 12px;
   text-align: center;
   transition: all 0.2s ease;
   position: relative;
@@ -566,7 +583,7 @@ html {
 }
 
 .nf-result-value {
-  font-size: clamp(20px, 3vw, 32px);
+  font-size: clamp(18px, 2.5vw, 28px);
   font-weight: 900;
   letter-spacing: -0.02em;
   color: var(--text-1);
@@ -590,25 +607,131 @@ html {
 }
 
 /* ── Nutrition ────────────────────────────────── */
+
 .nf-nutrition-layout {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
   align-items: start;
+}
+
+/* Wizard Styles */
+.nf-wizard-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 12px;
+  background: rgba(34, 197, 94, 0.05);
+  border-radius: 8px;
+}
+
+.nf-wizard-step-indicator {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.08);
+  border: 2px solid rgba(34, 197, 94, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-2);
+  transition: all 0.3s ease;
+}
+
+.nf-wizard-step-indicator--active {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-color: #22c55e;
+  color: #fff;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.nf-wizard-step-line {
+  width: 24px;
+  height: 2px;
+  background: rgba(34, 197, 94, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nf-wizard-step-line--active {
+  background: #22c55e;
+}
+
+.nf-wizard-content {
+  position: relative;
+  min-height: 240px;
+  margin-bottom: 14px;
+}
+
+.nf-wizard-card {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  transition: all 0.3s ease;
+  transform: translateX(20px);
+}
+
+.nf-wizard-card--active {
+  opacity: 1;
+  pointer-events: auto;
+  position: relative;
+  transform: translateX(0);
+}
+
+.nf-wizard-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text-1);
+  letter-spacing: -0.01em;
+}
+
+.nf-wizard-hint {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.nf-wizard-custom-btn {
+  margin-top: 8px !important;
+}
+
+.nf-custom-food-form--compact {
+  margin-top: 8px;
+  padding: 10px;
+  gap: 8px;
+}
+
+.nf-wizard-controls {
+  display: flex;
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(34, 197, 94, 0.1);
+}
+
+.nf-wizard-controls button {
+  flex: 1;
 }
 
 .nf-nutrition-panel,
 .nf-meal-panel {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
+  max-height: calc(100vh - 380px);
+  overflow-y: auto;
 }
 
 .nf-nutrition-fields {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-bottom: 14px;
+  gap: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(34, 197, 94, 0.1);
 }
 
@@ -721,21 +844,21 @@ html {
 }
 
 .nf-nutrition-preview {
-  margin-top: 14px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .nf-selected-food {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  padding: 12px;
+  gap: 6px;
+  padding: 8px 10px;
   background: rgba(34, 197, 94, 0.06);
   border: 1px solid rgba(34, 197, 94, 0.12);
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .nf-selected-food-label {
@@ -766,7 +889,7 @@ html {
 .nf-nutrition-tables {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .nf-table-wrap {
@@ -814,12 +937,12 @@ html {
 }
 
 .nf-nutrition-actions {
-  margin-top: 14px;
-  padding-top: 14px;
+  margin-top: 10px;
+  padding-top: 10px;
   border-top: 1px solid rgba(34, 197, 94, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .nf-btn--add {
@@ -835,11 +958,11 @@ html {
 
 .nf-nutrition-note--center {
   text-align: center;
-  padding: 24px 12px;
+  padding: 16px 10px;
   background: rgba(34, 197, 94, 0.04);
   border: 1px dashed rgba(34, 197, 94, 0.1);
-  border-radius: 8px;
-  font-size: 12px;
+  border-radius: 6px;
+  font-size: 11px;
   color: var(--text-2);
 }
 
@@ -852,9 +975,9 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  margin-bottom: 12px;
-  padding-bottom: 12px;
+  gap: 6px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid rgba(34, 197, 94, 0.1);
 }
 
@@ -863,8 +986,8 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 32px 16px;
+  gap: 8px;
+  padding: 20px 12px;
   text-align: center;
   background: rgba(34, 197, 94, 0.04);
   border: 1px dashed rgba(34, 197, 94, 0.1);
@@ -873,15 +996,15 @@ html {
 }
 
 .nf-meal-empty-icon {
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1;
   opacity: 0.7;
 }
 
 .nf-meal-empty p {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-2);
-  line-height: 1.5;
+  line-height: 1.4;
   max-width: 240px;
   margin: 0;
 }
@@ -889,7 +1012,7 @@ html {
 .nf-meal-content {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 .nf-meal-total {
@@ -912,10 +1035,10 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
+  gap: 6px;
+  padding: 8px 10px;
   border-bottom: 1px solid rgba(34, 197, 94, 0.08);
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .nf-meal-item:last-child {
@@ -977,12 +1100,12 @@ html {
 .nf-chat-panel {
   background: linear-gradient(135deg, rgba(var(--bg-card-rgb), 0.8), rgba(var(--bg-card-rgb), 0.6));
   border: 1px solid rgba(34, 197, 94, 0.12);
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  min-height: min(45vh, 400px);
+  min-height: min(35vh, 300px);
   backdrop-filter: blur(8px);
 }
 
@@ -1009,15 +1132,15 @@ html {
 }
 
 .nf-chat-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
   background: linear-gradient(135deg, #22c55e, #16a34a);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 13px;
   color: #fff;
   flex-shrink: 0;
 }
@@ -1027,11 +1150,11 @@ html {
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(34, 197, 94, 0.1);
-  border-radius: 12px;
+  border-radius: 10px;
   background: rgba(var(--bg-1-rgb), 0.3);
   overflow: hidden;
   min-height: 0;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .nf-chat-bar {
@@ -1102,11 +1225,11 @@ html {
 }
 
 .nf-bubble {
-  padding: 9px 12px;
-  border-radius: 10px;
-  font-size: 12px;
-  line-height: 1.5;
-  max-width: 80%;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 1.4;
+  max-width: 85%;
   word-wrap: break-word;
   display: flex;
   flex-direction: column;
@@ -1335,9 +1458,9 @@ html {
 .nf-footer {
   border-top: 1px solid rgba(34, 197, 94, 0.1);
   background: rgba(var(--bg-0-rgb), 0.5);
-  padding: 16px 28px;
+  padding: 10px 24px;
   text-align: center;
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-3);
   font-weight: 500;
   z-index: 10;
