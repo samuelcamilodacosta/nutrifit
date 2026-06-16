@@ -73,7 +73,7 @@ Crie um plano alimentar de 1 dia com café da manhã, almoço, jantar e 1–2 la
 
 const TAB_KEYS = ['calories', 'nutrition', 'chat'];
 
-export default function NutriFit({ onBackClick }) {
+export default function NutriFit() {
   const { tr, lang, setLang, theme, setTheme } = useContext(AppContext);
   const [tab, setTab] = useState('calories');
   const [pendingChatMessage, setPendingChatMessage] = useState(null);
