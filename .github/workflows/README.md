@@ -1,16 +1,17 @@
 # GitHub Actions CI
 
-Workflow simples para build e test automático.
+Workflow simples que usa o environment `nutrifit` do GitHub.
 
 ## Configuração
 
-Adicione a secret no GitHub:
-- **Name**: `NUTRIFIT_GROQ_API_KEY`
-- **Value**: Sua chave Groq
+Secrets já configuradas no environment `nutrifit`:
+- `VITE_GROQ_API_KEY` ✅
+- `VITE_GROQ_MODEL` ✅
 
 ## O que faz
 
 - Instala dependências
-- Faz build
+- Faz build usando secrets do environment
 - Roda testes
 - Gera coverage report
+

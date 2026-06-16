@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    environment: nutrifit
 
     steps:
     - uses: actions/checkout@v4
@@ -25,7 +26,8 @@ jobs:
     - name: Build
       run: npm run build
       env:
-        VITE_GROQ_API_KEY: ${{ secrets.NUTRIFIT_GROQ_API_KEY }}
+        VITE_GROQ_API_KEY: ${{ secrets.VITE_GROQ_API_KEY }}
+        VITE_GROQ_MODEL: ${{ secrets.VITE_GROQ_MODEL }}
 
     - name: Test
       run: npm test
