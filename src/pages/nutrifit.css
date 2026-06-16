@@ -1,0 +1,1299 @@
+/* ── NutriFlow layout ───────────────────────────────── */
+.nf-app {
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
+  background: var(--bg-0);
+  color: var(--text-1);
+  display: flex;
+  flex-direction: column;
+}
+
+.nf-header {
+  border-bottom: 1px solid var(--border-s);
+  background: color-mix(in srgb, var(--bg-1) 88%, transparent);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nf-header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nf-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nf-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nf-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 18px;
+  color: #fff;
+  box-shadow: 0 4px 14px color-mix(in srgb, #22c55e 35%, transparent);
+}
+
+.nf-brand-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.nf-back {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nf-back:hover {
+  color: #22c55e;
+}
+
+.nf-lang-btn {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-2);
+  background: color-mix(in srgb, var(--bg-2) 80%, transparent);
+  border: 1px solid var(--border-s);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.nf-lang-btn:hover {
+  color: #22c55e;
+  border-color: color-mix(in srgb, #22c55e 40%, transparent);
+}
+
+.nf-theme-btn {
+  font-size: 18px;
+  background: none;
+  border: 1px solid var(--border-s);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-1);
+}
+
+.nf-theme-btn:hover {
+  border-color: color-mix(in srgb, #22c55e 40%, transparent);
+  background: color-mix(in srgb, var(--bg-2) 50%, transparent);
+}
+
+/* ── Hero ─────────────────────────────────────────── */
+.nf-hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-s);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, color-mix(in srgb, #22c55e 14%, transparent), transparent),
+    var(--bg-1);
+}
+
+.nf-hero-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 48px 20px 40px;
+}
+
+.nf-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #22c55e;
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  border: 1px solid color-mix(in srgb, #22c55e 28%, transparent);
+  border-radius: 99px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+
+.nf-hero-title {
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 14px;
+  line-height: 1.15;
+}
+
+.nf-hero-sub {
+  font-size: clamp(15px, 2.5vw, 17px);
+  color: var(--text-2);
+  line-height: 1.7;
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.nf-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.nf-feature {
+  background: var(--bg-card);
+  border: 1px solid var(--border-s);
+  border-radius: 14px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+}
+
+.nf-feature:hover {
+  border-color: color-mix(in srgb, #22c55e 30%, transparent);
+  box-shadow: 0 4px 20px color-mix(in srgb, #22c55e 10%, transparent);
+}
+
+.nf-feature:active {
+  transform: scale(0.99);
+}
+
+.nf-feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.nf-feature-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.nf-feature-desc {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.5;
+}
+
+/* ── Tabs ─────────────────────────────────────────── */
+.nf-tabs-wrap {
+  max-width: 1120px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 20px 0;
+  overflow: hidden;
+}
+
+.nf-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.nf-tab {
+  min-width: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-s);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  text-align: center;
+  line-height: 1.35;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.nf-tab:hover {
+  color: var(--text-1);
+  border-color: color-mix(in srgb, #22c55e 25%, transparent);
+}
+
+.nf-tab--active {
+  background: color-mix(in srgb, #22c55e 14%, transparent);
+  border-color: color-mix(in srgb, #22c55e 35%, transparent);
+  color: #22c55e;
+}
+
+/* ── Main ─────────────────────────────────────────── */
+.nf-main {
+  flex: 1;
+  max-width: 1120px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.nf-panel {
+  width: 100%;
+  min-width: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-s);
+  border-radius: 18px;
+  padding: clamp(20px, 4vw, 36px);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--bg-0) 40%, transparent);
+  overflow: hidden;
+}
+
+.nf-panel-title {
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.nf-panel-desc {
+  font-size: 15px;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+/* ── Form ─────────────────────────────────────────── */
+.nf-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.nf-form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.nf-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nf-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.nf-input {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-s);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--text-1);
+  font-family: inherit;
+  transition: border-color 0.15s;
+}
+
+.nf-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, #22c55e 45%, transparent);
+}
+
+.nf-radio-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+}
+
+.nf-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-1);
+  cursor: pointer;
+}
+
+.nf-btn-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.nf-btn {
+  width: 100%;
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, transform 0.1s;
+  text-align: center;
+  line-height: 1.35;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.nf-btn:hover {
+  background: #16a34a;
+}
+
+.nf-btn:active {
+  transform: scale(0.98);
+}
+
+.nf-btn-secondary {
+  width: 100%;
+  background: transparent;
+  color: #22c55e;
+  border: 1px solid color-mix(in srgb, #22c55e 45%, transparent);
+  border-radius: 10px;
+  padding: 13px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  text-align: center;
+  line-height: 1.35;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.nf-btn-secondary:hover {
+  background: color-mix(in srgb, #22c55e 8%, transparent);
+}
+
+/* ── Results ──────────────────────────────────────── */
+.nf-results {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-s);
+}
+
+.nf-results-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.nf-results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.nf-result-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border-s);
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.nf-result-card--accent {
+  border-color: color-mix(in srgb, #22c55e 40%, transparent);
+  background: color-mix(in srgb, #22c55e 8%, transparent);
+}
+
+.nf-result-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  margin-bottom: 8px;
+}
+
+.nf-result-value {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.nf-result-unit {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 6px;
+}
+
+.nf-disclaimer {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.55;
+}
+
+/* ── Nutrition ────────────────────────────────────── */
+.nf-nutrition-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.nf-nutrition-panel,
+.nf-meal-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.nf-nutrition-header .nf-panel-desc {
+  margin-bottom: 0;
+}
+
+.nf-nutrition-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border-s);
+}
+
+.nf-input--spaced {
+  margin-top: 8px;
+}
+
+.nf-custom-food {
+  margin-top: 24px;
+}
+
+.nf-custom-food-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg-1);
+  border: 1px dashed color-mix(in srgb, #22c55e 35%, var(--border-s));
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #16a34a;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.nf-custom-food-toggle:hover {
+  background: color-mix(in srgb, #22c55e 8%, var(--bg-1));
+  border-style: solid;
+}
+
+.nf-custom-food-toggle-icon {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.nf-custom-food-form {
+  margin-top: 14px;
+  padding: 20px;
+  background: var(--bg-1);
+  border: 1px solid var(--border-s);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nf-custom-food-desc {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.nf-custom-food-macros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.nf-custom-food-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: color-mix(in srgb, #22c55e 8%, var(--bg-card));
+  border: 1px solid color-mix(in srgb, #22c55e 22%, transparent);
+  border-radius: 10px;
+}
+
+.nf-custom-food-preview-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.nf-custom-food-preview-value {
+  font-size: 16px;
+  font-weight: 800;
+  color: #16a34a;
+}
+
+.nf-custom-food-error {
+  font-size: 13px;
+  color: #ef4444;
+  margin: 0;
+}
+
+.nf-btn--save-food {
+  margin-top: 4px;
+}
+
+.nf-custom-badge {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #16a34a;
+  background: color-mix(in srgb, #22c55e 12%, transparent);
+  border: 1px solid color-mix(in srgb, #22c55e 28%, transparent);
+  border-radius: 99px;
+  padding: 2px 8px;
+  vertical-align: middle;
+}
+
+.nf-nutrition-preview {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nf-selected-food {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 14px 16px;
+  background: color-mix(in srgb, #22c55e 8%, var(--bg-1));
+  border: 1px solid color-mix(in srgb, #22c55e 22%, transparent);
+  border-radius: 12px;
+}
+
+.nf-selected-food-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #16a34a;
+}
+
+.nf-selected-food-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-1);
+  flex: 1;
+  min-width: 0;
+}
+
+.nf-selected-food-qty {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  background: var(--bg-card);
+  border: 1px solid var(--border-s);
+  border-radius: 99px;
+  padding: 4px 12px;
+}
+
+.nf-nutrition-tables {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nf-nutrition-actions {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border-s);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nf-btn--add {
+  margin-top: 0;
+}
+
+.nf-nutrition-note {
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.nf-nutrition-note--center {
+  text-align: center;
+  padding: 32px 16px;
+  background: var(--bg-1);
+  border: 1px dashed var(--border-s);
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.nf-meal-panel .nf-panel-title {
+  margin-bottom: 0;
+}
+
+.nf-meal-head {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-s);
+}
+
+.nf-meal-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--bg-1);
+  border: 1px dashed var(--border-s);
+  border-radius: 14px;
+  min-height: 220px;
+}
+
+.nf-meal-empty-icon {
+  font-size: 36px;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.nf-meal-empty p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+  max-width: 280px;
+  margin: 0;
+}
+
+.nf-meal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nf-meal-total {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 8px;
+}
+
+.nf-table-wrap {
+  margin-top: 0;
+  border: 1px solid var(--border-s);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.nf-table-wrap--highlight {
+  border-color: color-mix(in srgb, #22c55e 35%, transparent);
+}
+
+.nf-table-title {
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-2);
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border-s);
+}
+
+.nf-table {
+  width: 100%;
+  min-width: 260px;
+  border-collapse: collapse;
+}
+
+.nf-th {
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  text-align: left;
+  border-bottom: 1px solid var(--border-s);
+}
+
+.nf-td {
+  padding: 10px 14px;
+  font-size: 14px;
+  color: var(--text-1);
+  border-bottom: 1px solid var(--border-s);
+}
+
+.nf-meal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nf-clear-btn {
+  background: none;
+  border: 1px solid var(--border-s);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.nf-empty {
+  font-size: 14px;
+  color: var(--text-2);
+  padding: 32px 0;
+  text-align: center;
+}
+
+.nf-meal-list {
+  list-style: none;
+  margin: 0;
+  background: var(--bg-1);
+  border: 1px solid var(--border-s);
+  border-radius: 12px;
+  padding: 4px 16px;
+}
+
+.nf-meal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-s);
+  font-size: 14px;
+}
+
+.nf-meal-item:last-child {
+  border-bottom: none;
+}
+
+.nf-meal-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.nf-meal-item-name {
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.nf-meal-meta {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.nf-meal-remove {
+  background: none;
+  border: 1px solid var(--border-s);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  font-family: inherit;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.nf-meal-remove:hover {
+  color: #ef4444;
+  border-color: color-mix(in srgb, #ef4444 40%, transparent);
+}
+
+/* ── Footer ───────────────────────────────────────── */
+.nf-footer {
+  border-top: 1px solid var(--border-s);
+  background: var(--bg-1);
+  margin-top: auto;
+}
+
+.nf-footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.nf-footer-text {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+/* ── Chat (NutriFlowChat) ─────────────────────────── */
+.nf-chat-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-s);
+  border-radius: 18px;
+  padding: clamp(20px, 4vw, 36px);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--bg-0) 40%, transparent);
+  display: flex;
+  flex-direction: column;
+  min-height: min(72vh, 720px);
+}
+
+.nf-chat-head {
+  margin-bottom: 20px;
+}
+
+.nf-chat-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.nf-chat-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 17px;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px color-mix(in srgb, #22c55e 30%, transparent);
+}
+
+.nf-chat-title {
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 800;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.nf-chat-desc {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.nf-chat-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-s);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-1);
+  min-height: 0;
+}
+
+.nf-chat-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-s);
+  flex-shrink: 0;
+}
+
+.nf-chat-bar-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.nf-chat-bar-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.nf-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+}
+
+.nf-chat-messages {
+  flex: 1;
+  min-height: 280px;
+  overflow-y: auto;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nf-msg-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  max-width: 100%;
+}
+
+.nf-msg-row--ai {
+  align-self: flex-start;
+}
+
+.nf-msg-row--user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.nf-bubble {
+  max-width: min(520px, 85vw);
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.65;
+  white-space: pre-wrap;
+}
+
+.nf-bubble--user {
+  background: #22c55e;
+  color: #fff;
+  border-bottom-right-radius: 4;
+}
+
+.nf-bubble--ai {
+  background: var(--bg-card);
+  border: 1px solid var(--border-s);
+  color: var(--text-1);
+  border-bottom-left-radius: 4;
+}
+
+.nf-badge--ai {
+  font-size: 11px;
+  font-weight: 700;
+  color: #22c55e;
+  margin-bottom: 6px;
+}
+
+.nf-badge--user {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 6px;
+  text-align: right;
+}
+
+.nf-typing {
+  display: flex;
+  gap: 5px;
+  padding: 4px 0;
+}
+
+.nf-typing-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  opacity: 0.5;
+  animation: typing-dot 1s ease-in-out infinite;
+}
+
+.nf-suggestions {
+  padding: 14px 18px;
+  border-top: 1px solid var(--border-s);
+  background: var(--bg-card);
+  flex-shrink: 0;
+}
+
+.nf-suggestions-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+
+.nf-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.nf-chip {
+  max-width: 100%;
+  background: color-mix(in srgb, #22c55e 8%, var(--bg-1));
+  border: 1px solid color-mix(in srgb, #22c55e 28%, transparent);
+  border-radius: 99px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #16a34a;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  line-height: 1.35;
+  word-break: break-word;
+  text-align: left;
+}
+
+.nf-chip:hover:not(:disabled) {
+  background: color-mix(in srgb, #22c55e 16%, var(--bg-1));
+}
+
+.nf-chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nf-chat-form {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  border-top: 1px solid var(--border-s);
+  background: var(--bg-card);
+  flex-shrink: 0;
+}
+
+.nf-chat-input {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg-input);
+  border: 1px solid var(--border-s);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: var(--text-1);
+  font-family: inherit;
+}
+
+.nf-chat-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, #22c55e 45%, transparent);
+}
+
+.nf-chat-send {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nf-chat-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nf-chat-disclaimer {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+/* ── Responsive ───────────────────────────────────── */
+@media (min-width: 769px) {
+  .nf-btn-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nf-btn,
+  .nf-btn-secondary {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: min(100%, 160px);
+  }
+}
+
+@media (max-width: 900px) {
+  .nf-features {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-nutrition-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nf-form-grid .nf-field:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .nf-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-tab {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nf-header-inner {
+    padding: 12px 16px;
+  }
+
+  .nf-hero-inner {
+    padding: 32px 16px 28px;
+  }
+
+  .nf-tabs-wrap {
+    padding: 20px 16px 0;
+  }
+
+  .nf-main {
+    padding: 20px 16px 36px;
+  }
+
+  .nf-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-form-grid .nf-field:last-child {
+    grid-column: auto;
+  }
+
+  .nf-results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-chip {
+    flex: 1 1 calc(50% - 4px);
+    min-width: min(100%, 140px);
+  }
+
+  .nf-meal-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .nf-meal-remove {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .nf-custom-food-macros {
+    grid-template-columns: 1fr;
+  }
+
+  .nf-chat-panel {
+    min-height: min(80vh, 640px);
+  }
+
+  .nf-chat-messages {
+    min-height: 220px;
+    padding: 16px 14px;
+  }
+
+  .nf-bubble {
+    max-width: 92vw;
+  }
+
+  .nf-msg-row--ai .nf-chat-avatar {
+    display: none;
+  }
+
+  .nf-chat-form {
+    flex-direction: column;
+    padding: 14px;
+  }
+
+  .nf-chat-send {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .nf-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nf-chat-messages {
+    min-height: 420px;
+  }
+
+  .nf-main--chat {
+    min-height: 600px;
+  }
+}
