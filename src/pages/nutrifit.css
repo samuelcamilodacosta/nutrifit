@@ -227,7 +227,8 @@ html {
   height: 6px;
   border-radius: 50%;
   background: #22c55e;
-  box-shadow: 0 0 8px #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+  flex-shrink: 0;
 }
 
 .nf-hero-title {
@@ -555,11 +556,11 @@ html {
 
 .nf-custom-food-toggle {
   width: 100%;
-  padding: 10px 14px;
-  background: rgba(34, 197, 94, 0.06);
+  padding: 10px 12px;
+  background: rgba(34, 197, 94, 0.08);
   border: 1px solid rgba(34, 197, 94, 0.15);
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: #22c55e;
   cursor: pointer;
@@ -568,7 +569,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
 }
 
 .nf-custom-food-toggle:hover {
@@ -638,12 +639,48 @@ html {
   background: linear-gradient(135deg, rgba(var(--bg-card-rgb), 0.8), rgba(var(--bg-card-rgb), 0.6));
   border: 1px solid rgba(34, 197, 94, 0.12);
   border-radius: 16px;
-  padding: 20px;
+  padding: 18px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  min-height: min(50vh, 500px);
+  min-height: min(45vh, 400px);
   backdrop-filter: blur(8px);
+}
+
+.nf-chat-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.nf-chat-desc {
+  font-size: 12px;
+  color: var(--text-2);
+  margin: 0;
+}
+
+.nf-chat-head {
+  margin-bottom: 12px;
+}
+
+.nf-chat-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.nf-chat-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
 }
 
 .nf-chat-box {
@@ -655,7 +692,39 @@ html {
   background: rgba(var(--bg-1-rgb), 0.3);
   overflow: hidden;
   min-height: 0;
-  margin-top: 12px;
+  margin-top: 10px;
+}
+
+.nf-chat-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(34, 197, 94, 0.06);
+  border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+  flex-shrink: 0;
+}
+
+.nf-chat-bar-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.nf-chat-bar-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--text-3);
+}
+
+.nf-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
 }
 
 .nf-chat-messages {
@@ -677,27 +746,112 @@ html {
   border-radius: 2px;
 }
 
+.nf-badge--ai,
+.nf-badge--user {
+  font-size: 10px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.nf-badge--ai {
+  color: #22c55e;
+}
+
+.nf-badge--user {
+  color: rgba(255, 255, 255, 0.8);
+  text-align: right;
+}
+
 .nf-bubble {
-  padding: 10px 13px;
+  padding: 9px 12px;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.5;
-  max-width: 85%;
+  max-width: 80%;
   word-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .nf-bubble--user {
   background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
   color: #ffffff;
   align-self: flex-end;
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+  box-shadow: 0 3px 10px rgba(34, 197, 94, 0.2);
 }
 
 .nf-bubble--ai {
   background: rgba(34, 197, 94, 0.08);
-  border: 1px solid rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.1);
   color: var(--text-1);
   align-self: flex-start;
+}
+
+.nf-msg-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.nf-msg-row--ai {
+  align-self: flex-start;
+}
+
+.nf-msg-row--user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.nf-typing {
+  display: flex;
+  gap: 4px;
+  padding: 2px 0;
+}
+
+.nf-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  opacity: 0.5;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.nf-typing-dot:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.nf-typing-dot:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+.nf-suggestions {
+  padding: 10px 12px;
+  border-top: 1px solid rgba(34, 197, 94, 0.1);
+  background: rgba(var(--bg-card-rgb), 0.3);
+  flex-shrink: 0;
+}
+
+.nf-suggestions-title {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-3);
+  margin-bottom: 8px;
+}
+
+.nf-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .nf-chip {
