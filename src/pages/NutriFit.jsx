@@ -97,12 +97,24 @@ export default function NutriFit() {
             <span className="nf-brand-name">{tr.headline}</span>
           </div>
           <div className="nf-header-controls">
-            <button type="button" className="nf-theme-btn" onClick={toggleTheme} title="Alternar tema">
-              {theme === 'dark' ? tr.themeToggle : '🌙'}
-            </button>
-            <button type="button" className="nf-lang-btn" onClick={toggleLang}>
-              {tr.langToggle}
-            </button>
+            <div className="nf-control-group">
+              <button 
+                type="button" 
+                className={`nf-theme-btn ${theme === 'dark' ? 'nf-theme-btn--active' : ''}`}
+                onClick={toggleTheme} 
+                title={theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro'}
+              >
+                {theme === 'dark' ? '🌙' : '☀️'}
+              </button>
+              <button 
+                type="button" 
+                className={`nf-lang-btn ${lang === 'en' ? 'nf-lang-btn--active' : ''}`}
+                onClick={toggleLang}
+                title={lang === 'pt' ? 'Switch to English' : 'Mudar para Português'}
+              >
+                {lang === 'pt' ? 'EN' : 'PT'}
+              </button>
+            </div>
           </div>
         </div>
       </header>
