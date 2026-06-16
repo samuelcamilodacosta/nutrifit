@@ -56,8 +56,12 @@ function apiKeyMissingError(lang) {
     : '**Chave de API ausente.** Crie uma chave gratuita em https://console.groq.com/keys e adicione no `.env` como `VITE_GROQ_API_KEY=sua_chave`, depois reinicie o servidor.';
 }
 
-export async function getNutriFitAiResponse(messages, lang) {
-  if (!GROQ_KEY) {
+export function getApiKey() {
+  return GROQ_KEY;
+}
+
+export async function getNutriFitAiResponse(messages, lang, apiKey = GROQ_KEY) {
+  if (!apiKey) {
     throw new Error(apiKeyMissingError(lang));
   }
 
@@ -65,7 +69,7 @@ export async function getNutriFitAiResponse(messages, lang) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${GROQ_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       model: GROQ_MODEL,

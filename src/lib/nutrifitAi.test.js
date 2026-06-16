@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   getNutriFitAiResponse,
   formatAssistantMessage,
+  getApiKey,
 } from './nutrifitAi';
 
 describe('nutrifitAi', () => {
@@ -104,18 +105,14 @@ describe('nutrifitAi', () => {
     });
 
     it('should throw error when API key is missing', async () => {
-      delete process.env.VITE_GROQ_API_KEY;
-
       const messages = [{ role: 'user', text: 'Hello' }];
 
       await expect(
-        getNutriFitAiResponse(messages, 'pt')
-      ).rejects.toThrow();
+        getNutriFitAiResponse(messages, 'pt', null)
+      ).rejects.toThrow('Chave de API ausente');
     });
 
     it('should handle successful API response', async () => {
-      process.env.VITE_GROQ_API_KEY = 'test-key-12345';
-
       global.fetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({
@@ -130,15 +127,16 @@ describe('nutrifitAi', () => {
       });
 
       const messages = [{ role: 'user', text: 'Hello' }];
-      const response = await getNutriFitAiResponse(messages, 'pt');
+      const response = await getNutriFitAiResponse(messages, 'pt', 'test-key');
 
       expect(response).toBe('Test response');
-      delete process.env.VITE_GROQ_API_KEY;
+      expect(global.fetch).toHaveBeenCalledWith(
+        'https://api.groq.com/openai/v1/chat/completions',
+        expect.any(Object)
+      );
     });
 
     it('should handle error responses', async () => {
-      process.env.VITE_GROQ_API_KEY = 'test-key-12345';
-
       global.fetch.mockResolvedValueOnce({
         ok: false,
         status: 500,
@@ -150,15 +148,11 @@ describe('nutrifitAi', () => {
       const messages = [{ role: 'user', text: 'Hello' }];
 
       await expect(
-        getNutriFitAiResponse(messages, 'pt')
+        getNutriFitAiResponse(messages, 'pt', 'test-key')
       ).rejects.toThrow();
-
-      delete process.env.VITE_GROQ_API_KEY;
     });
 
     it('should return trimmed response text', async () => {
-      process.env.VITE_GROQ_API_KEY = 'test-key-12345';
-
       global.fetch.mockResolvedValueOnce({
         ok: true,
         json: async () => ({
@@ -173,10 +167,9 @@ describe('nutrifitAi', () => {
       });
 
       const messages = [{ role: 'user', text: 'Hello' }];
-      const response = await getNutriFitAiResponse(messages, 'pt');
+      const response = await getNutriFitAiResponse(messages, 'pt', 'test-key');
 
       expect(response).toBe('Test response with spaces');
-      delete process.env.VITE_GROQ_API_KEY;
     });
   });
 });
